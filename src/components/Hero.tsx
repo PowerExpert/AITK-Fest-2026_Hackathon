@@ -1,3 +1,5 @@
+import StatsCounter from './StatsCounter'
+
 function BridgeArt() {
   return (
     <svg
@@ -93,9 +95,10 @@ export default function Hero() {
         <div className="hero-row">
           <div className="hero-row__left">
             <h1 className="hero-name">Көпір</h1>
-            <a href="/check.html" className="btn btn--primary">
+            <a href="./check.html" className="btn btn--primary">
               Проверить резюме →
             </a>
+            <StatsCounter />
           </div>
 
           <div className="hero-side">

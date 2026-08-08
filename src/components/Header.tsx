@@ -16,12 +16,13 @@ export default function Header() {
           <a href="#how" onClick={() => setOpen(false)}>Как это работает</a>
           <a href="#about" onClick={() => setOpen(false)}>О проекте</a>
           <a href="#contacts" onClick={() => setOpen(false)}>Контакты</a>
-          <a href="/check.html" className="btn btn--primary btn--sm nav__cta" onClick={() => setOpen(false)}>
+          <a href="./dashboard.html" onClick={() => setOpen(false)}>Личный кабинет</a>
+          <a href="./check.html" className="btn btn--primary btn--sm nav__cta" onClick={() => setOpen(false)}>
             Проверить резюме
           </a>
         </nav>
 
-        <a href="/check.html" className="btn btn--primary btn--sm header__cta">
+        <a href="./check.html" className="btn btn--primary btn--sm header__cta">
           Проверить резюме
         </a>
 
