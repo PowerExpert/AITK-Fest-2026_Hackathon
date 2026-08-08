@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Проверить резюме — Көпір</title>
+    <meta name="description" content="Загрузите резюме — текстом, PDF, DOCX или фото — и получите подходящие вакансии и короткий план переквалификации." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Fraunces:opsz,wght@9..144,350;9..144,500;9..144,600;9..144,650&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- PDF text extraction -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <!-- DOCX text extraction -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.11.0/mammoth.browser.min.js"></script>
+    <!-- Photo OCR -->
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="wrap header__row">
+        <a href="/" class="logo">
+          <span class="logo__dot"></span>
+          Көпір
+        </a>
+        <a href="/" class="btn btn--outline btn--sm">← на главную</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="checker">
+        <div class="wrap">
+          <p class="eyebrow">шаг 01 · загрузите резюме</p>
+          <h1 class="checker__title">Расскажите о своём опыте</h1>
+          <p class="checker__sub">
+            Текстом или файлом — PDF, DOCX, фото. Если в файле нет текстового слоя (например, фото
+            резюме), мы распознаём текст автоматически.
+          </p>
+
+          <div class="checker__panel">
+            <label class="checker__label" for="resumeInput">Текст резюме</label>
+            <textarea
+              id="resumeInput"
+              placeholder="Например: 5 лет работаю сварщиком на производстве, есть допуск НАКС, опыт работы с металлоконструкциями…"
+            ></textarea>
+
+            <div class="checker__upload-row">
+              <label class="checker__file-btn" for="fileInput">
+                <svg viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M10 3v10M10 3l-3.5 3.5M10 3l3.5 3.5" />
+                  <path d="M3.5 13.5v1.8a1.7 1.7 0 0 0 1.7 1.7h9.6a1.7 1.7 0 0 0 1.7-1.7v-1.8" />
+                </svg>
+                Загрузить файл — PDF, DOCX, фото
+              </label>
+              <input type="file" id="fileInput" accept=".pdf,.docx,.txt,image/*" hidden />
+              <span id="fileName" class="checker__file-name"></span>
+            </div>
+
+            <div class="checker__region-row">
+              <label for="regionSelect">Регион</label>
+              <select id="regionSelect">
+                <option value="Алматы">Алматы</option>
+                <option value="Астана">Астана</option>
+                <option value="Шымкент">Шымкент</option>
+                <option value="Караганда">Караганда</option>
+                <option value="Актобе">Актобе</option>
+                <option value="Атырау">Атырау</option>
+                <option value="Другой регион">Другой регион</option>
+              </select>
+            </div>
+
+            <div class="checker__submit-row">
+              <button id="submitBtn" class="btn btn--primary">Проверить резюме →</button>
+              <span class="checker__hint">Обычно занимает около 30 секунд</span>
+            </div>
+
+            <div id="loadingState" class="checker__loading">
+              <span class="spinner"></span>
+              <span id="loadingText">Анализируем резюме…</span>
+            </div>
+            <div id="errorState" class="checker__error"></div>
+          </div>
+
+          <div id="results" class="checker__results">
+            <div class="checker__results-head">
+              <h2>Результат</h2>
+              <span class="checker__ai-pill">на основе перечня дефицитных профессий РК</span>
+            </div>
+            <p id="resultsSummary" class="checker__results-summary"></p>
+
+            <p class="checker__col-title checker__col-title--now">подходит уже сейчас</p>
+            <div id="nowJobs"></div>
+
+            <p class="checker__col-title checker__col-title--plan">короткий план переквалификации</p>
+            <div id="planJobs"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="wrap footer__bottom">
+        <span>© 2026 Көпір</span>
+        <span class="footer__muted">ИИ-навигатор «безработица vs дефицит кадров»</span>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/check.ts"></script>
+  </body>
+</html>
