@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url'
 // Замените 'kopir' на точное имя вашего GitHub-репозитория.
 // Если сайт будет на username.github.io (репозиторий называется именно так)
 // или на своём домене — поставьте base: '/'.
-const REPO_NAME = 'kopir'
+const REPO_NAME = 'AITK-Fest-2026_Hackathon'
 
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? `/${REPO_NAME}/` : '/',
